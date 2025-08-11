@@ -1,34 +1,33 @@
-from PyQt5.QtCore import QObject, pyqtSignal, QThread
-import serial
-import json
+"""
+Seri Okuyucu Modülü (Eski versiyon - Geriye uyumluluk için)
+Yeni serial_manager modülü kullanılması önerilir
+"""
 
-class SerialReaderThread(QThread):
-    dataReceived = pyqtSignal(dict)
-    def __init__(self, port, baudrate=115200):
+from .serial_manager import SerialManager
+
+
+class SerialReader(SerialManager):
+    """
+    Eski SerialReader sınıfı için uyumluluk wrapper'ı
+    Yeni SerialManager kullanılması önerilir
+    """
+    
+    def __init__(self):
         super().__init__()
-        self.port = port
-        self.baudrate = baudrate
-        self.running = True
-
-    def run(self):
-        ser = serial.Serial(self.port, self.baudrate)
-        while self.running:
-            line = ser.readline().decode(errors='ignore').strip()
-            if not line:
-                continue
-            if '{' in line:
-                json_str = line[line.find('{'):]
-                try:
-                    data = json.loads(json_str)
-                    self.dataReceived.emit(data)
-                except json.JSONDecodeError:
-                    continue
-
-    def stop(self):
-        self.running = False
-
-# Örnek kullanım:
-# from modules.serial_reader import SerialReaderThread
-# serial_thread = SerialReaderThread('/dev/ttyACM0', 115200)
-# serial_thread.dataReceived.connect(lambda data: print(data))
-# serial_thread.start() 
+    
+    # Eski metodlar için alias'lar
+    def read_serial(self):
+        """Eski metod - artık _read_serial kullanılıyor"""
+        return self._read_serial()
+    
+    def get_ports(self):
+        """Eski metod - artık get_available_ports kullanılıyor"""
+        return self.get_available_ports()
+    
+    def connect_port(self, port_name, baudrate=9600):
+        """Eski metod - artık connect_to_port kullanılıyor"""
+        return self.connect_to_port(port_name, baudrate)
+    
+    def disconnect_port(self):
+        """Eski metod - artık disconnect_from_port kullanılıyor"""
+        return self.disconnect_from_port() 

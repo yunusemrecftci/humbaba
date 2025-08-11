@@ -18,7 +18,7 @@ ApplicationWindow {
     Component {
         id: logoImage
         Image {
-            source: "assets/images/LOGO.PNG"
+            source: "../assets/images/LOGO.PNG"
             fillMode: Image.PreserveAspectFit
             width: 48
             height: 48
@@ -284,7 +284,7 @@ ApplicationWindow {
                 }
                 onClicked: {
                     if (portCombo.currentText === "Fake Telemetri") {
-                        telemetryBridge.startFakeTelemetry()
+                        telemetryBridge.start_fake_telemetry()
                         speechHelper.speak("Fake telemetri başlatıldı")
                         currentTab = 0  // Telemetri sayfasına geç
                     } else if (portCombo.currentText) {
@@ -1411,7 +1411,7 @@ ApplicationWindow {
             anchors.centerIn: parent
             spacing: 32
             Image {
-                source: "assets/images/LOGO.PNG"
+                source: "../assets/images/LOGO.PNG"
                 width: 180
                 height: 180
                 fillMode: Image.PreserveAspectFit
