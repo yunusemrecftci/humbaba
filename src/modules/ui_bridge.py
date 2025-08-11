@@ -154,22 +154,48 @@ class SpeechHelper(QObject):
         super().__init__()
         self.speech = QTextToSpeech()
         self.muted = False
+        
+        # Türkçe dil desteği ekle
+        try:
+            from PyQt5.QtCore import QLocale
+            self.speech.setLocale(QLocale("tr_TR"))
+        except Exception as e:
+            print(f"Türkçe dil ayarı yapılamadı: {e}")
+        
+        # Ses ayarları
+        self.speech.setRate(0.0)  # Normal hız
+        self.speech.setPitch(0.0)  # Normal ton
+        self.speech.setVolume(1.0)  # Tam ses
     
     @pyqtSlot(str)
     def speak(self, text: str):
         """Metni sesli okur"""
-        if not self.muted:
-            self.speech.say(text)
+        if not self.muted and text:
+            try:
+                print(f"Sesli okuma: {text}")
+                self.speech.say(text)
+            except Exception as e:
+                print(f"Sesli okuma hatası: {e}")
     
     @pyqtSlot(bool)
     def set_muted(self, muted: bool):
         """Sesli okumayı açıp kapatır"""
         self.muted = muted
+        print(f"Sesli okuma durumu: {'Kapalı' if muted else 'Açık'}")
     
     @pyqtSlot()
     def stop_speaking(self):
         """Sesli okumayı durdurur"""
-        self.speech.stop()
+        try:
+            self.speech.stop()
+            print("Sesli okuma durduruldu")
+        except Exception as e:
+            print(f"Sesli okuma durdurma hatası: {e}")
+    
+    @pyqtSlot(result=bool)
+    def is_available(self):
+        """Sesli okuma kullanılabilir mi kontrol eder"""
+        return self.speech.state() != QTextToSpeech.NotReady
 
 
 class LogManager(QObject):

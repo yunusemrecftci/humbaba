@@ -434,7 +434,6 @@ ApplicationWindow {
                             roketAudio.volume = isMuted ? 0 : 1.0
                             audioPlayer.volume = isMuted ? 0 : 1.0
                             speechHelper.setMuted(isMuted)
-                            packetSender.setMuted(isMuted)
                             speechHelper.stopSpeaking()
                         }
                     }
