@@ -147,9 +147,9 @@ Telemetri verileri `flight_logs.db` SQLite veritabanında saklanır:
 
 - **Dark**: Koyu tema (varsayılan)
 - **Light**: Açık tema
-- **Milenyum**: Futuristik tema
-- **Roma**: Klasik tema
-- **Cyberpunk**: Siberpunk teması
+- **Milenyum**: Starwars tema
+- **Roma**: Roma tema
+- **Cyberpunk**: Cyberpunk teması
 
 ## 🔌 Sistem Entegrasyonu
 
@@ -278,7 +278,7 @@ Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
 
 ## 📚 Referanslar
 
-- [HYİ Protokolü Dokümantasyonu](docs/EK-7_Hakem_Yer_İstasyonu_y52A5%20(8).docx)
+
 - [PyQt5 Dokümantasyonu](https://doc.qt.io/qtforpython/)
 - [QML Dokümantasyonu](https://doc.qt.io/qt-6/qmlapplications.html)
 
