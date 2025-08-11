@@ -16,6 +16,7 @@ Humbaba Yer İstasyonu, roket telemetri verilerini gerçek zamanlı olarak izlem
 - **Harita Görünümü**: Roket konumunu harita üzerinde takip etme
 - **Fake Telemetri**: Test için simüle edilmiş veri üretimi
 - **Modüler Yapı**: Kolay entegrasyon ve genişletilebilirlik
+- **Sesli Okuma**: Türkçe dil desteği ile sesli uyarılar
 - **Cross-Platform**: Windows, macOS ve Linux desteği
 
 ## 🎯 Kullanım Alanları
@@ -40,13 +41,17 @@ Humbaba Yer İstasyonu, roket telemetri verilerini gerçek zamanlı olarak izlem
 ```
 yerist/
 ├── src/
-│   ├── main.py              # Ana uygulama dosyası
+│   ├── main.py                 # Ana uygulama dosyası
 │   ├── ui/
-│   │   └── Main.qml         # QML arayüz dosyası
+│   │   └── Main.qml            # QML arayüz dosyası
 │   └── modules/
-│       ├── __init__.py
-│       ├── judge_packet.py  # Hakem paket işlemleri
-│       └── serial_reader.py # Seri port okuma
+│       ├── __init__.py         # Modül paketi
+│       ├── protocol.py         # HYI protokolü işlemleri
+│       ├── serial_manager.py   # Seri port yönetimi
+│       ├── database_manager.py # Veritabanı işlemleri
+│       ├── ui_bridge.py        # QML-Python köprü sınıfları
+│       ├── judge_packet.py     # Hakem paket işlemleri (geriye uyumluluk)
+│       └── serial_reader.py    # Seri port okuma (geriye uyumluluk)
 ├── assets/
 │   ├── images/
 │   │   ├── LOGO.PNG
@@ -63,7 +68,7 @@ yerist/
 ├── docs/
 │   └── EK-7_Hakem_Yer_İstasyonu_y52A5 (8).docx
 ├── requirements.txt
-├── main.spec
+├── .gitignore
 └── README.md
 ```
 
@@ -72,9 +77,9 @@ yerist/
 ### Gereksinimler
 
 - Python 3.8+
-- PyQt5
-- pyserial
-- sqlite3
+- PyQt5 >= 5.15.0
+- pyserial >= 3.5
+- sqlite3 (Python ile birlikte gelir)
 
 ### Adımlar
 
@@ -135,6 +140,13 @@ Arayüzde "Takım ID" alanından takım numaranızı ayarlayabilirsiniz.
 - **Baudrate**: 9600, 19200, 38400, 57600, 115200
 - **Fake Telemetri**: Test için simüle edilmiş veri
 
+### Sesli Okuma Ayarları
+- **Dil**: Türkçe (tr_TR) varsayılan olarak ayarlanmıştır
+- **Ses Seviyesi**: Tam ses (1.0)
+- **Hız**: Normal hız (0.0)
+- **Ton**: Normal ton (0.0)
+- **Sessiz Mod**: Buton ile açıp kapatılabilir
+
 ## 📊 Veritabanı
 
 Telemetri verileri `flight_logs.db` SQLite veritabanında saklanır:
@@ -169,6 +181,14 @@ Bu uygulama, çeşitli roket sistemleriyle entegre edilebilir:
    - Özel protokoller için genişletilebilir
    - UDP/TCP üzerinden veri alma
 
+### Modüler Yapı
+Uygulama modüler bir yapıya sahiptir:
+
+- **`protocol.py`**: HYI protokolü işlemleri
+- **`serial_manager.py`**: Seri port yönetimi
+- **`database_manager.py`**: Veritabanı işlemleri
+- **`ui_bridge.py`**: QML-Python köprü sınıfları
+
 ### Entegrasyon Örnekleri
 ```python
 # Arduino telemetri sistemi entegrasyonu
@@ -190,6 +210,37 @@ Bu uygulama, çeşitli roket sistemleriyle entegre edilebilir:
 ```
 
 
+## 🐛 Bilinen Hatalar ve Sorunlar
+
+### Mevcut Hatalar
+- **Dosya Yolu Sorunları**: Bazı asset dosyaları için yanlış yollar
+- **QML Layout Uyarıları**: Layout ve anchors kullanımında uyarılar
+- **Sinyal Bağlantı Uyarıları**: Bazı QML sinyal bağlantılarında uyarılar
+
+### Gelecek Düzeltmeler
+- [ ] Dosya yolu sorunlarının çözülmesi
+- [ ] QML layout uyarılarının giderilmesi
+- [ ] Sinyal bağlantı uyarılarının düzeltilmesi
+- [ ] Hata yakalama mekanizmalarının iyileştirilmesi
+
+## 🐛 Sorun Giderme
+
+### Bağlantı Sorunları
+1. Port listesinin dolu olduğundan emin olun
+2. Doğru portu seçtiğinizi kontrol edin
+3. Baudrate ayarlarını kontrol edin
+4. Portun başka bir uygulama tarafından kullanılmadığından emin olun
+
+### Sesli Okuma Sorunları
+1. Sistem ses ayarlarını kontrol edin
+2. Türkçe dil desteğinin yüklü olduğundan emin olun
+3. Sessiz modun kapalı olduğunu kontrol edin
+
+### Genel Sorunlar
+- Uygulama başlatılırken hata alırsanız, terminal çıktısını kontrol edin
+- Veritabanı dosyasının yazma izinlerini kontrol edin
+- Python sürümünün uyumlu olduğundan emin olun
+
 ## 📄 Lisans
 
 Bu proje MIT lisansı altında lisanslanmıştır.
@@ -207,7 +258,7 @@ Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
 
 ## 📚 Referanslar
 
-
+- [HYİ Protokolü Dokümantasyonu](docs/EK-7_Hakem_Yer_İstasyonu_y52A5%20(8).docx)
 - [PyQt5 Dokümantasyonu](https://doc.qt.io/qtforpython/)
 - [QML Dokümantasyonu](https://doc.qt.io/qt-6/qmlapplications.html)
 
