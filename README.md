@@ -22,9 +22,7 @@ Humbaba Yer İstasyonu, roket telemetri verilerini gerçek zamanlı olarak izlem
 
 ### Roket Yarışmaları
 - TEKNOFEST Roket Yarışması
-- TÜBİTAK Roket Yarışması
-- Uluslararası roket yarışmaları
-- Eğitim kurumları roket projeleri
+
 
 ### Araştırma ve Geliştirme
 - Roket performans analizi
