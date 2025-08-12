@@ -1,57 +1,56 @@
-# Humbaba Yer İstasyonu
+# Humbaba Ground Station
 
-> ⚠️ **Geliştirme Aşamasında** ⚠️
+> ⚠️ **Under Development** ⚠️
 > 
-> Bu proje aktif geliştirme aşamasındadır ve bazı hatalar içerebilir. Üretim ortamında kullanmadan önce kapsamlı test yapılması önerilir.
+> This project is in active development and may contain some bugs. Comprehensive testing is recommended before using in production environments.
 
-Humbaba Yer İstasyonu, roket telemetri verilerini gerçek zamanlı olarak izlemek ve hakem yer istasyonuna HYİ protokolüne uygun veri göndermek için geliştirilmiş bir Python/QML uygulamasıdır. Bu proje, **genel kullanım** için tasarlanmış olup, çeşitli roket sistemlerine entegre edilebilir.
+Humbaba Ground Station is a Python/QML application developed for real-time rocket telemetry monitoring and sending data to judge ground stations in compliance with HYI protocol. This project is designed for **general use** and can be integrated with various rocket systems.
 
-## 🚀 Özellikler
+## 🚀 Features
 
-- **Gerçek Zamanlı Telemetri**: Roket verilerini canlı olarak izleme
-- **Hakem Yer İstasyonu Entegrasyonu**: HYİ protokolüne uygun veri gönderimi
-- **Çoklu Tema Desteği**: Dark, Light, Milenyum, Roma, Cyberpunk temaları
-- **Sesli Uyarılar**: İrtifa ve durum değişikliklerinde sesli bildirimler
-- **Uçuş Kayıtları**: Telemetri verilerini veritabanında saklama
-- **Harita Görünümü**: Roket konumunu harita üzerinde takip etme
-- **Fake Telemetri**: Test için simüle edilmiş veri üretimi
-- **Modüler Yapı**: Kolay entegrasyon ve genişletilebilirlik
-- **Sesli Okuma**: Türkçe dil desteği ile sesli uyarılar
-- **Cross-Platform**: Windows, macOS ve Linux desteği
+- **Real-Time Telemetry**: Live rocket data monitoring
+- **Judge Ground Station Integration**: HYI protocol compliant data transmission
+- **Multi-Theme Support**: Dark, Light, Millennium, Rome, Cyberpunk themes
+- **Voice Alerts**: Audio notifications for altitude and status changes
+- **Flight Records**: Store telemetry data in database
+- **Map View**: Track rocket position on map
+- **Fake Telemetry**: Simulated data generation for testing
+- **Modular Structure**: Easy integration and extensibility
+- **Voice Reading**: Voice alerts with Turkish language support
+- **Cross-Platform**: Windows, macOS and Linux support
 
-## 🎯 Kullanım Alanları
+## 🎯 Use Cases
 
-### Roket Yarışmaları
-- TEKNOFEST Roket Yarışması
+### Rocket Competitions
+- TEKNOFEST Rocket Competition
 
+### Research and Development
+- Rocket performance analysis
+- Telemetry data collection
+- System integration tests
+- Prototype development
 
-### Araştırma ve Geliştirme
-- Roket performans analizi
-- Telemetri veri toplama
-- Sistem entegrasyonu testleri
-- Prototip geliştirme
+### Education
+- Rocket technology education
+- Telemetry systems teaching
+- Software development projects
 
-### Eğitim
-- Roket teknolojileri eğitimi
-- Telemetri sistemleri öğretimi
-- Yazılım geliştirme projeleri
-
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 yerist/
 ├── src/
-│   ├── main.py                 # Ana uygulama dosyası
+│   ├── main.py                 # Main application file
 │   ├── ui/
-│   │   └── Main.qml            # QML arayüz dosyası
+│   │   └── Main.qml            # QML interface file
 │   └── modules/
-│       ├── __init__.py         # Modül paketi
-│       ├── protocol.py         # HYI protokolü işlemleri
-│       ├── serial_manager.py   # Seri port yönetimi
-│       ├── database_manager.py # Veritabanı işlemleri
-│       ├── ui_bridge.py        # QML-Python köprü sınıfları
-│       ├── judge_packet.py     # Hakem paket işlemleri (geriye uyumluluk)
-│       └── serial_reader.py    # Seri port okuma (geriye uyumluluk)
+│       ├── __init__.py         # Module package
+│       ├── protocol.py         # HYI protocol operations
+│       ├── serial_manager.py   # Serial port management
+│       ├── database_manager.py # Database operations
+│       ├── ui_bridge.py        # QML-Python bridge classes
+│       ├── judge_packet.py     # Judge packet operations (backward compatibility)
+│       └── serial_reader.py    # Serial port reading (backward compatibility)
 ├── assets/
 │   ├── images/
 │   │   ├── LOGO.PNG
@@ -72,127 +71,127 @@ yerist/
 └── README.md
 ```
 
-## 🛠️ Kurulum
+## 🛠️ Installation
 
-### Gereksinimler
+### Requirements
 
 - Python 3.8+
 - PyQt5 >= 5.15.0
 - pyserial >= 3.5
-- sqlite3 (Python ile birlikte gelir)
+- sqlite3 (comes with Python)
 
-### Adımlar
+### Steps
 
-1. **Repository'yi klonlayın:**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/kullaniciadi/yerist.git
+   git clone https://github.com/username/yerist.git
    cd yerist
    ```
 
-2. **Sanal ortam oluşturun:**
+2. **Create virtual environment:**
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # Linux/Mac
-   # veya
+   # or
    .venv\Scripts\activate     # Windows
    ```
 
-3. **Bağımlılıkları yükleyin:**
+3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Uygulamayı çalıştırın:**
+4. **Run the application:**
    ```bash
    python src/main.py
    ```
 
-## 📖 Kullanım
+## 📖 Usage
 
-### Ana Ekran
-- **Telemetri Sekmesi**: Canlı roket verilerini görüntüleme
-- **Hakem Portu Sekmesi**: Hakem yer istasyonuna bağlantı ayarları
-- **Geçmiş Sekmesi**: Önceki uçuş kayıtları ve istatistikler
+### Main Screen
+- **Telemetry Tab**: Display live rocket data
+- **Judge Port Tab**: Judge ground station connection settings
+- **History Tab**: Previous flight records and statistics
 
-### Hakem Yer İstasyonu Bağlantısı
-1. "Hakem Portu" sekmesine gidin
-2. Port listesinden uygun portu seçin
-3. Baudrate'i ayarlayın (genellikle 9600, 19200, 115200)
-4. "Bağlan" butonuna basın
-5. Bağlantı durumunu kontrol edin
+### Judge Ground Station Connection
+1. Go to "Judge Port" tab
+2. Select appropriate port from port list
+3. Set baudrate (usually 9600, 19200, 115200)
+4. Click "Connect" button
+5. Check connection status
 
-### HYİ Protokolü
-Uygulama, hakem yer istasyonuna HYİ protokolüne uygun 78 byte'lık paketler gönderir:
+### HYI Protocol
+The application sends 78-byte packets to judge ground stations in compliance with HYI protocol:
 - Header: 0xFF, 0xFF, 0x54, 0x52
-- Takım ID ve paket sayacı
-- 16 adet float değer (irtifa, GPS, sensör verileri)
-- Durum byte'ı
+- Team ID and packet counter
+- 16 float values (altitude, GPS, sensor data)
+- Status byte
 - Checksum
-- Kuyruk: 0x0D, 0x0A
+- Tail: 0x0D, 0x0A
 
-## 🔧 Konfigürasyon
+## 🔧 Configuration
 
-### Takım ID
-Arayüzde "Takım ID" alanından takım numaranızı ayarlayabilirsiniz.
+### Team ID
+You can set your team number from the "Team ID" field in the interface.
 
-### Port Ayarları
-- **Port**: Seri port seçimi
+### Port Settings
+- **Port**: Serial port selection
 - **Baudrate**: 9600, 19200, 38400, 57600, 115200
-- **Fake Telemetri**: Test için simüle edilmiş veri
+- **Fake Telemetry**: Simulated data for testing
 
-### Sesli Okuma Ayarları
-- **Dil**: Türkçe (tr_TR) varsayılan olarak ayarlanmıştır
-- **Ses Seviyesi**: Tam ses (1.0)
-- **Hız**: Normal hız (0.0)
-- **Ton**: Normal ton (0.0)
-- **Sessiz Mod**: Buton ile açıp kapatılabilir
+### Voice Reading Settings
+- **Language**: Turkish (tr_TR) is set as default
+- **Volume**: Full volume (1.0)
+- **Speed**: Normal speed (0.0)
+- **Pitch**: Normal pitch (0.0)
+- **Silent Mode**: Can be turned on/off with button
 
-## 📊 Veritabanı
+## 📊 Database
 
-Telemetri verileri `flight_logs.db` SQLite veritabanında saklanır:
-- `flights`: Uçuş kayıtları
-- `telemetry_logs`: Telemetri verileri
+Telemetry data is stored in `flight_logs.db` SQLite database:
+- `flights`: Flight records
+- `telemetry_logs`: Telemetry data
 
-## 🎨 Temalar
+## 🎨 Themes
 
-- **Dark**: Koyu tema (varsayılan)
-- **Light**: Açık tema
-- **Milenyum**: Starwars tema
-- **Roma**: Roma tema
-- **Cyberpunk**: Cyberpunk teması
+- **Dark**: Dark theme (default)
+- **Light**: Light theme
+- **Millennium**: Starwars theme
+- **Rome**: Rome theme
+- **Cyberpunk**: Cyberpunk theme
 
-## 🔌 Sistem Entegrasyonu
+## 🔌 System Integration
 
-### Roket Sistemlerine Entegrasyon
-Bu uygulama, çeşitli roket sistemleriyle entegre edilebilir:
+### Integration with Rocket Systems
+This application can be integrated with various rocket systems:
 
-1. **Seri Port Üzerinden Veri Alma**
-   - Arduino tabanlı telemetri sistemleri
-   - Raspberry Pi telemetri modülleri
-   - Özel telemetri kartları
+1. **Data Reception via Serial Port**
+   - Arduino-based telemetry systems
+   - Raspberry Pi telemetry modules
+   - Custom telemetry cards
 
-2. **Veri Formatı Uyumluluğu**
-   - JSON formatında telemetri verisi
-   - Standart sensör verileri (irtifa, GPS, ivme, jiroskop)
-   - Özel veri alanları eklenebilir
+2. **Data Format Compatibility**
+   - Telemetry data in JSON format
+   - Standard sensor data (altitude, GPS, accelerometer, gyroscope)
+   - Custom data fields can be added
 
-3. **Protokol Desteği**
-   - HYİ protokolü (hakem yer istasyonu)
-   - Özel protokoller için genişletilebilir
-   - UDP/TCP üzerinden veri alma
+3. **Protocol Support**
+   - HYI protocol (judge ground station)
+   - Extensible for custom protocols
+   - Data reception via UDP/TCP
 
-### Modüler Yapı
-Uygulama modüler bir yapıya sahiptir:
+### Modular Structure
+The application has a modular structure:
 
-- **`protocol.py`**: HYI protokolü işlemleri
-- **`serial_manager.py`**: Seri port yönetimi
-- **`database_manager.py`**: Veritabanı işlemleri
-- **`ui_bridge.py`**: QML-Python köprü sınıfları
+- **`protocol.py`**: HYI protocol operations
+- **`serial_manager.py`**: Serial port management
+- **`database_manager.py`**: Database operations
+- **`ui_bridge.py`**: QML-Python bridge classes
 
-### Entegrasyon Örnekleri
+### Integration Examples
 ```python
-# Arduino telemetri sistemi entegrasyonu
-# Arduino'dan gelen veri formatı:
+# Arduino telemetry system integration
+# Data format from Arduino:
 {
     "irtifa": 1500.5,
     "gps_irtifa": 1498.2,
@@ -209,61 +208,65 @@ Uygulama modüler bir yapıya sahiptir:
 }
 ```
 
+## 🐛 Known Bugs and Issues
 
-## 🐛 Bilinen Hatalar ve Sorunlar
+### Current Bugs
+- **File Path Issues**: Wrong paths for some asset files
+- **QML Layout Warnings**: Warnings in layout and anchors usage
+- **Signal Connection Warnings**: Warnings in some QML signal connections
 
-### Mevcut Hatalar
-- **Dosya Yolu Sorunları**: Bazı asset dosyaları için yanlış yollar
-- **QML Layout Uyarıları**: Layout ve anchors kullanımında uyarılar
-- **Sinyal Bağlantı Uyarıları**: Bazı QML sinyal bağlantılarında uyarılar
+### Future Fixes
+- [ ] Fix file path issues
+- [ ] Resolve QML layout warnings
+- [ ] Fix signal connection warnings
+- [ ] Improve error handling mechanisms
 
-### Gelecek Düzeltmeler
-- [ ] Dosya yolu sorunlarının çözülmesi
-- [ ] QML layout uyarılarının giderilmesi
-- [ ] Sinyal bağlantı uyarılarının düzeltilmesi
-- [ ] Hata yakalama mekanizmalarının iyileştirilmesi
+## 🐛 Troubleshooting
 
-## 🐛 Sorun Giderme
+### Connection Issues
+1. Make sure port list is populated
+2. Check if you selected the correct port
+3. Verify baudrate settings
+4. Ensure port is not used by another application
 
-### Bağlantı Sorunları
-1. Port listesinin dolu olduğundan emin olun
-2. Doğru portu seçtiğinizi kontrol edin
-3. Baudrate ayarlarını kontrol edin
-4. Portun başka bir uygulama tarafından kullanılmadığından emin olun
+### Voice Reading Issues
+1. Check system audio settings
+2. Make sure Turkish language support is installed
+3. Check if silent mode is turned off
 
-### Sesli Okuma Sorunları
-1. Sistem ses ayarlarını kontrol edin
-2. Türkçe dil desteğinin yüklü olduğundan emin olun
-3. Sessiz modun kapalı olduğunu kontrol edin
+### General Issues
+- If you get an error when starting the application, check terminal output
+- Check write permissions for database file
+- Make sure Python version is compatible
 
-### Genel Sorunlar
-- Uygulama başlatılırken hata alırsanız, terminal çıktısını kontrol edin
-- Veritabanı dosyasının yazma izinlerini kontrol edin
-- Python sürümünün uyumlu olduğundan emin olun
+## 📄 License
 
-## 📄 Lisans
+This project is licensed under the MIT License.
 
-Bu proje MIT lisansı altında lisanslanmıştır.
-
-## 👨‍💻 Geliştirici
+## 👨‍💻 Developer
 
 **Yunus Emre Çiftçi**
-- Proje: Humbaba Yer İstasyonu
-- Teknoloji: Python, PyQt5, QML, SQLite
-- Amaç: Roket teknolojileri ve telemetri sistemleri
+- Project: Humbaba Ground Station
+- Technology: Python, PyQt5, QML, SQLite
+- Purpose: Rocket technologies and telemetry systems
 
-## 📞 İletişim
+## 📞 Contact
 
-Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
+You can open an issue or send a pull request for your questions.
 
-## 📚 Referanslar
+## 📚 References
 
-- [HYİ Protokolü Dokümantasyonu](docs/EK-7_Hakem_Yer_İstasyonu_y52A5%20(8).docx)
-- [PyQt5 Dokümantasyonu](https://doc.qt.io/qtforpython/)
-- [QML Dokümantasyonu](https://doc.qt.io/qt-6/qmlapplications.html)
+- [HYI Protocol Documentation](docs/EK-7_Hakem_Yer_İstasyonu_y52A5%20(8).docx)
+- [PyQt5 Documentation](https://doc.qt.io/qtforpython/)
+- [QML Documentation](https://doc.qt.io/qt-6/qmlapplications.html)
 
 ---
 
-**Not**: Bu uygulama roket yarışmaları ve genel kullanım için geliştirilmiştir. HYİ protokolüne uygun veri gönderimi yapar ve çeşitli roket sistemlerine entegre edilebilir. Geliştirme aşamasında olduğu için üretim ortamında kullanmadan önce kapsamlı test yapılması önerilir.
+**Note**: This application is developed for rocket competitions and general use. It sends data in compliance with HYI protocol and can be integrated with various rocket systems. Since it's in development stage, comprehensive testing is recommended before using in production environments.
 
+---
 
+## 🌍 Language
+
+- 🇺🇸 [English](README.md) (Current)
+- 🇹🇷 [Türkçe](README_TR.md)
